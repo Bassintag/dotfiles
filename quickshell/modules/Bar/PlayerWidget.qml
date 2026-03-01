@@ -1,12 +1,8 @@
 import QtQuick
 import QtQuick.Layouts
-import QtQuick.Controls
 import qs
 import qs.services
-import qs.utils
 import Quickshell.Services.Mpris
-import Quickshell.Widgets
-import QtQuick.Effects
 
 Rectangle {
   id: root

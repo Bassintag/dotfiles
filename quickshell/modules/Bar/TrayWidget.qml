@@ -1,9 +1,6 @@
 import QtQuick
-import Quickshell
-import QtQuick.Layouts
 import Quickshell.Services.SystemTray
 import Quickshell.Widgets
-import QtQuick
 
 MouseArea {
   required property SystemTrayItem modelData

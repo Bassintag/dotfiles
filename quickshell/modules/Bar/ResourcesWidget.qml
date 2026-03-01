@@ -8,16 +8,16 @@ Rectangle {
   implicitWidth: childrenRect.width + 8
   implicitHeight: 20
 
-  color: Theme.accent2
+  color: Theme.accent0
   radius: 4
 
   RowLayout {
     id: row
-    spacing: 4
+    spacing: 8
 
     anchors.centerIn: parent
 
-    AudioSinkWidget {}
-    AudioSourceWidget {}
+    ResourcesMemoryWidget {}
+    ResourcesCpuWidget {}
   }
 }

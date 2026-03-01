@@ -23,7 +23,6 @@ Scope {
     }
   }
 
-
   Window {
     id: root
     color: "transparent"

@@ -1,8 +1,6 @@
 import Quickshell
-import Quickshell.Io
 import QtQuick
 import QtQuick.Layouts
-import Quickshell.Hyprland
 import Quickshell.Services.SystemTray
 import qs
 
@@ -37,11 +35,24 @@ Scope {
         anchors.left: parent.left
         anchors.verticalCenter: parent.verticalCenter
         anchors.leftMargin: 8
+        spacing: 8
 
+        RowLayout {
+          spacing: 4
 
-        Repeater {
-          model: 9
-          WorkspaceWidget {}
+          Repeater {
+            model: 9
+            WorkspaceWidget {}
+          }
+        }
+
+        RowLayout {
+          spacing: 4
+
+          Repeater {
+            model: SystemTray.items
+            TrayWidget {}
+          }
         }
       }
 
@@ -56,10 +67,7 @@ Scope {
         spacing: 8
 
         PlayerWidget {}
-        Repeater {
-          model: SystemTray.items
-          TrayWidget {}
-        }
+        ResourcesWidget {}
         AudioWidget {}
       }
     }

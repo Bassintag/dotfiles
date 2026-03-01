@@ -19,13 +19,13 @@ Singleton {
         var parts = data.trim().split(/\s+/)
         total = parseInt(parts[1]) || 1
         used = parseInt(parts[2]) || 0
-        usage = Math.round(100 * used / total)
+        usage = used / total
       }
     }
   }
 
   Timer {
-    interval: 2000
+    interval: 5000
     running: true
     repeat: true
     onTriggered: {
