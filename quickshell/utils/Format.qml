@@ -1,10 +1,10 @@
+import QtQuick
+import Quickshell
 pragma Singleton
 
-import Quickshell
-import QtQuick
-
 Scope {
-  function formatPercentage(value: number) {
-    return (value * 100).toFixed(0) + " %";
-  }
+    function formatPercentage(value) : string {
+        return (value * 100).toFixed(0) + " %";
+    }
+
 }

@@ -1,13 +1,18 @@
-pragma Singleton
-
+import QtQuick
 import Quickshell
 import Quickshell.Services.Notifications
-import QtQuick
+pragma Singleton
 
 Scope {
-  function getAppIcon(name: string, fallback: string): string {
-    const icon = DesktopEntries.heuristicLookup(name)?.icon;
-    if (fallback !== "undefined") return Quickshell.iconPath(icon, fallback);
-    return Quickshell.iconPath(icon);
-  }
+    function getAppIcon(name: string, fallback: string) : string {
+        const entry = DesktopEntries.heuristicLookup(name);
+        if (entry == null)
+            return null;
+
+        if (fallback !== "undefined")
+            return Quickshell.iconPath(entry, fallback);
+
+        return Quickshell.iconPath(entry.icon);
+    }
+
 }

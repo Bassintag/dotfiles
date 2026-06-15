@@ -1,49 +1,62 @@
 import QtQuick
-import Quickshell
 import QtQuick.Layouts
+import Quickshell
 import Quickshell.Services.Notifications
 
 Scope {
-  id: root
+    id: root
 
-  NotificationServer {
-    id: notificationServer
-    actionsSupported: true
-    imageSupported: true
-    onNotification: (n) => {
-      n.tracked = true
-    }
-  }
+    NotificationServer {
+        id: notificationServer
 
-  PanelWindow {
-    color: "transparent"
-
-
-    anchors {
-      top: true
-      right: true
+        actionsSupported: true
+        imageSupported: true
+        onNotification: (n) => {
+            n.tracked = true;
+        }
     }
 
+    Variants {
+        model: Quickshell.screens
 
-    implicitWidth: content.implicitWidth + 16
-    implicitHeight: content.implicitHeight + 16
+        PanelWindow {
+            required property var modelData
 
+            screen: modelData
+            color: "transparent"
+            implicitWidth: content.implicitWidth + 16
+            implicitHeight: content.implicitHeight + 16
 
-    ColumnLayout {
-      id: content
-      spacing: 8
-    
-      anchors {
-        top: parent.top
-        right: parent.right
-        topMargin: 16
-        rightMargin: 16
-      }
+            anchors {
+                top: true
+                right: true
+            }
 
-      Repeater {
-        model: notificationServer.trackedNotifications
-        NotificationCard { model: modelData }
-      }
+            ColumnLayout {
+                id: content
+
+                spacing: 8
+
+                anchors {
+                    top: parent.top
+                    right: parent.right
+                    topMargin: 16
+                    rightMargin: 16
+                }
+
+                Repeater {
+                    model: notificationServer.trackedNotifications
+
+                    NotificationCard {
+                        model: modelData
+                    }
+
+                }
+
+            }
+
+        }
+
     }
-  }
+
 }

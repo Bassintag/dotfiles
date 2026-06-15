@@ -1,75 +1,94 @@
-import Quickshell
 import QtQuick
 import QtQuick.Layouts
+import Quickshell
 import Quickshell.Services.SystemTray
 import qs
 
 Scope {
-  
-  id: root
+    id: root
 
-  property string time
+    property string time
 
-  Variants {
-    model: Quickshell.screens
+    Variants {
+        model: Quickshell.screens
 
-    PanelWindow {
-      required property var modelData
+        PanelWindow {
+            id: window
 
-      id: window
+            required property var modelData
 
-      screen: modelData
+            screen: modelData
+            color: Theme.bg0
+            implicitHeight: 32
 
-      color: Theme.bg0
+            anchors {
+                top: true
+                left: true
+                right: true
+            }
 
-      anchors {
-        top: true
-        left: true
-        right: true
-      }
+            // Workspaces
+            RowLayout {
+                anchors.left: parent.left
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.leftMargin: 8
+                spacing: 8
 
-      implicitHeight: 32
+                RowLayout {
+                    spacing: 4
 
-      // Workspaces
-      RowLayout {
-        anchors.left: parent.left
-        anchors.verticalCenter: parent.verticalCenter
-        anchors.leftMargin: 8
-        spacing: 8
+                    Repeater {
+                        model: 9
 
-        RowLayout {
-          spacing: 4
+                        WorkspaceWidget {
+                        }
 
-          Repeater {
-            model: 9
-            WorkspaceWidget {}
-          }
+                    }
+
+                }
+
+                RowLayout {
+                    spacing: 4
+
+                    Repeater {
+                        model: SystemTray.items
+
+                        TrayWidget {
+                        }
+
+                    }
+
+                }
+
+            }
+
+            // Time
+            TimeWidget {
+            }
+
+            // Widgets
+            RowLayout {
+                anchors.right: parent.right
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.rightMargin: 8
+                spacing: 8
+
+                PlayerWidget {
+                }
+
+                ResourcesWidget {
+                }
+
+                BatteryWidget {
+                }
+
+                AudioWidget {
+                }
+
+            }
+
         }
 
-        RowLayout {
-          spacing: 4
-
-          Repeater {
-            model: SystemTray.items
-            TrayWidget {}
-          }
-        }
-      }
-
-      // Time
-      TimeWidget {}
-
-      // Widgets
-      RowLayout {
-        anchors.right: parent.right
-        anchors.verticalCenter: parent.verticalCenter
-        anchors.rightMargin: 8
-        spacing: 8
-
-        PlayerWidget {}
-        ResourcesWidget {}
-        AudioWidget {}
-      }
     }
-  }
+
 }

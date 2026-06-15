@@ -80,7 +80,7 @@ Rectangle {
 
       Text {
         id: title
-        text: track.title
+        text: track ? track.title : ""
         color: Theme.bg2
         font.pixelSize: 12
       }

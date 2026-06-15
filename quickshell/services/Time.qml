@@ -1,14 +1,15 @@
+import Quickshell
 pragma Singleton
 
-import Quickshell
-
 Singleton {
-  readonly property string time: {
-    Qt.formatDateTime(clock.date, "d MMM. HH:mm")
-  }
+    readonly property string time: {
+        Qt.formatDateTime(clock.date, "d MMM. HH:mm");
+    }
 
-  SystemClock {
-    id: clock
-    precision: SystemClock.Minutes
-  }
+    SystemClock {
+        id: clock
+
+        precision: SystemClock.Minutes
+    }
+
 }

@@ -3,21 +3,25 @@ import QtQuick.Layouts
 import qs
 
 Rectangle {
-  id: root
+    id: root
 
-  implicitWidth: childrenRect.width + 8
-  implicitHeight: 20
+    implicitWidth: layout.implicitWidth + 8
+    implicitHeight: 20
+    color: Theme.accent2
+    radius: 4
 
-  color: Theme.accent2
-  radius: 4
+    RowLayout {
+        id: layout
 
-  RowLayout {
-    id: row
-    spacing: 4
+        spacing: 4
+        anchors.centerIn: parent
 
-    anchors.centerIn: parent
+        AudioSinkWidget {
+        }
 
-    AudioSinkWidget {}
-    AudioSourceWidget {}
-  }
+        AudioSourceWidget {
+        }
+
+    }
+
 }
