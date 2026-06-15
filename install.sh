@@ -30,4 +30,10 @@ for dir in "$DOTFILES_DIR"/*/; do
     echo "   Symlink created"
 done
 
+# Symlink wallpaper
+if [ -f "$DOTFILES_DIR/wallpaper.png" ]; then
+    ln -sfn "$DOTFILES_DIR/wallpaper.png" "$HOME/wallpaper.png"
+    echo "🖼️  Wallpaper symlinked to ~/wallpaper.png"
+fi
+
 echo "✅ Done"
