@@ -4,6 +4,8 @@ set -euo pipefail
 DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
 CONFIG_DIR="$HOME/.config"
 
+touch "./hypr/hyprland/user.lua"
+
 echo "📦 Installing dotfiles from: $DOTFILES_DIR"
 mkdir -p "$CONFIG_DIR"
 
