@@ -7,14 +7,17 @@ Rectangle {
 
     implicitWidth: layout.implicitWidth + 8
     implicitHeight: 20
-    color: Theme.accent2
+    color: Theme.accent3
     radius: 4
 
     RowLayout {
         id: layout
 
-        spacing: 4
+        spacing: 8
         anchors.centerIn: parent
+
+        BrightnessWidget {
+        }
 
         AudioSinkWidget {
         }

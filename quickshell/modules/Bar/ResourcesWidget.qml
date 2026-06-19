@@ -5,16 +5,16 @@ import qs
 Rectangle {
     id: root
 
+    implicitWidth: layout.implicitWidth + 8
+    implicitHeight: 20
     color: Theme.accent0
     radius: 4
-    implicitWidth: layout.implicitWidth + 8
-    implicitHeight: layout.implicitHeight + 4
 
     RowLayout {
         id: layout
 
-        anchors.centerIn: parent
         spacing: 8
+        anchors.centerIn: parent
 
         ResourcesMemoryWidget {
         }

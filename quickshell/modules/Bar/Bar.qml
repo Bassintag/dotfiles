@@ -79,10 +79,13 @@ Scope {
                 ResourcesWidget {
                 }
 
+                NetworkWidget {
+                }
+
                 BatteryWidget {
                 }
 
-                AudioWidget {
+                SettingsWidget {
                 }
 
             }

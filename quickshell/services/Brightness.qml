@@ -1,0 +1,39 @@
+import Quickshell
+import Quickshell.Io
+pragma Singleton
+
+Singleton {
+    property string icon: ""
+    property real value: 0
+
+    Process {
+        command: ["sh", "-c", "udevadm monitor --subsystem-match=backlight --udev"]
+        running: true
+
+        stdout: SplitParser {
+            onRead: updateBrightness.running = true
+        }
+
+    }
+
+    Process {
+        id: updateBrightness
+
+        command: ["sh", "-c", "brightnessctl -m"]
+        running: true
+
+        stdout: StdioCollector {
+            onStreamFinished: {
+                value = parseInt(this.text.split(",")[3].replace("%", "")) / 100;
+                if (value > 2 / 3)
+                    icon = "󰃠";
+                else if (value > 1 / 3)
+                    icon = "󰃟";
+                else
+                    icon = "󰃞";
+            }
+        }
+
+    }
+
+}

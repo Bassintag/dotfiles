@@ -9,11 +9,11 @@ RowLayout {
     spacing: 2
 
     IconWidget {
-        icon: Audio.getSinkIcon(Audio.sink)
+        icon: Brightness.icon
     }
 
     Text {
-        text: Format.formatPercentage(Audio.sink.audio.volume)
+        text: Format.formatPercentage(Brightness.value)
         font.pixelSize: 12
     }
 

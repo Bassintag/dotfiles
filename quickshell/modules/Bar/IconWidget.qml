@@ -2,18 +2,17 @@ import QtQuick
 import qs
 
 Rectangle {
-  property string icon
+    property string icon
 
-  implicitWidth: 16
-  implicitHeight: 16
-  radius: 4
-  color: "transparent"
-  
-  Text {
-    anchors.centerIn: parent
-    color: Theme.bg0
+    implicitWidth: 16
+    implicitHeight: 16
+    radius: 4
+    color: "transparent"
 
-    text: icon
-    font.pixelSize: 12
-  }
+    Text {
+        anchors.centerIn: parent
+        text: icon
+        font.pixelSize: 12
+    }
+
 }

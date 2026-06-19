@@ -9,7 +9,7 @@ Rectangle {
 
     implicitWidth: layout.implicitWidth + 8
     implicitHeight: 20
-    color: Battery.danger ? Theme.red : Theme.accent2
+    color: Theme.accent1
     radius: 4
     visible: Battery.device.isLaptopBattery
 
@@ -20,11 +20,11 @@ Rectangle {
         anchors.centerIn: parent
 
         IconWidget {
-            icon: Battery.icon
+            icon: Network.icon
         }
 
         Text {
-            text: Format.formatPercentage(Battery.percentage)
+            text: Network.label
             font.pixelSize: 12
         }
 
