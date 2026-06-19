@@ -11,7 +11,6 @@ Rectangle {
     implicitHeight: 20
     color: Theme.accent1
     radius: 4
-    visible: Battery.device.isLaptopBattery
 
     RowLayout {
         id: layout
