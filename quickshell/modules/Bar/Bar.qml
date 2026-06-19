@@ -82,10 +82,10 @@ Scope {
                 NetworkWidget {
                 }
 
-                BatteryWidget {
+                SettingsWidget {
                 }
 
-                SettingsWidget {
+                BatteryWidget {
                 }
 
             }

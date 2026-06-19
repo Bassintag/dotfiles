@@ -9,7 +9,7 @@ Rectangle {
 
     implicitWidth: layout.implicitWidth + 8
     implicitHeight: 20
-    color: Battery.danger ? Theme.red : Theme.accent2
+    color: Battery.danger ? Theme.red : Theme.accent1
     radius: 4
     visible: Battery.device.isLaptopBattery
 

@@ -7,6 +7,7 @@ RowLayout {
     id: layout
 
     spacing: 2
+    visible: Brightness.enabled
 
     IconWidget {
         icon: Brightness.icon

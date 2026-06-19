@@ -7,7 +7,7 @@ Rectangle {
 
     implicitWidth: layout.implicitWidth + 8
     implicitHeight: 20
-    color: Theme.accent0
+    color: Theme.accent1
     radius: 4
 
     RowLayout {

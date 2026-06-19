@@ -14,7 +14,10 @@ Scope {
     NotificationList {
     }
 
-    Osd {
+    AudioOsd {
+    }
+
+    BrightnessOsd {
     }
 
 }

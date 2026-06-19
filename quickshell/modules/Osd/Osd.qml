@@ -2,32 +2,39 @@ import QtQuick
 import QtQuick.Layouts
 import Quickshell
 import qs
-import qs.services
 import qs.utils
 
 Scope {
     id: root
 
-    property bool show: false
+    property string icon: ""
+    property real value: 0
+    property color bg: Theme.bg3
+    property color fg: Theme.fg0
+    property color barBg: Theme.bg2
+    property color barFg: Theme.fg0
+    property int duration: 2000
+    property bool visible: false
 
-    Connections {
-        function onVolumeChanged() {
-            root.show = true;
-            hideTimer.restart();
-        }
+    signal requestHide()
 
-        target: Audio.sink.audio
+    function show() {
+        root.visible = true;
+        hideTimer.restart();
     }
 
     Timer {
         id: hideTimer
 
-        interval: 2000
-        onTriggered: root.show = false
+        interval: root.duration
+        onTriggered: {
+            root.visible = false;
+            root.requestHide();
+        }
     }
 
     LazyLoader {
-        active: show
+        active: root.visible
 
         Variants {
             model: Quickshell.screens
@@ -48,57 +55,44 @@ Scope {
                 Rectangle {
                     anchors.fill: parent
                     radius: 4
-                    color: Theme.bg3
+                    color: root.bg
 
                     Rectangle {
+                        anchors.fill: parent
+                        anchors.margins: 1
                         radius: parent.radius
                         color: Theme.bg0
 
-                        anchors {
-                            fill: parent
-                            margins: 1
-                        }
-
                         RowLayout {
+                            anchors.fill: parent
+                            anchors.centerIn: parent
+                            anchors.leftMargin: 12
+                            anchors.rightMargin: 12
                             spacing: 12
 
-                            anchors {
-                                fill: parent
-                                leftMargin: 12
-                                rightMargin: 12
-                            }
-
                             Text {
-                                text: Audio.getSinkIcon(Audio.sink)
-                                color: Theme.fg0
+                                text: root.icon
+                                color: root.fg
                             }
 
                             Rectangle {
                                 Layout.fillWidth: true
                                 implicitHeight: 8
                                 radius: 4
-                                color: Theme.bg2
+                                color: root.barBg
 
                                 Rectangle {
-                                    implicitWidth: parent.width * (Audio.sink.audio.volume ?? 0)
+                                    width: parent.width * Math.max(0, Math.min(1, root.value))
+                                    height: parent.height
                                     radius: parent.radius
-                                    color: Theme.fg0
-
-                                    anchors {
-                                        left: parent.left
-                                        top: parent.top
-                                        bottom: parent.bottom
-                                    }
-
+                                    color: root.barFg
                                 }
 
                             }
 
                             Text {
-                                text: {
-                                    Format.formatPercentage(Audio.sink.audio.volume);
-                                }
-                                color: Theme.fg0
+                                text: Format.formatPercentage(root.value)
+                                color: root.fg
                                 font.pixelSize: 12
                             }
 

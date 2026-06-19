@@ -3,8 +3,24 @@ import Quickshell.Io
 pragma Singleton
 
 Singleton {
+    property bool enabled: false
     property string icon: ""
     property real value: 0
+
+    Process {
+        command: ["sh", "-c", "brightnessctl -lm"]
+        running: true
+
+        stdout: SplitParser {
+            onRead: (data) => {
+                const parts = data.split(",");
+                if (parts[1] === "backlight")
+                    enabled = true;
+
+            }
+        }
+
+    }
 
     Process {
         command: ["sh", "-c", "udevadm monitor --subsystem-match=backlight --udev"]
