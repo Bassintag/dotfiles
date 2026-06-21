@@ -41,9 +41,9 @@ Singleton {
         stdout: StdioCollector {
             onStreamFinished: {
                 value = parseInt(this.text.split(",")[3].replace("%", "")) / 100;
-                if (value > 2 / 3)
+                if (value > 1 / 2)
                     icon = "󰃠";
-                else if (value > 1 / 3)
+                else if (value >= 0.01)
                     icon = "󰃟";
                 else
                     icon = "󰃞";

@@ -9,8 +9,8 @@ Rectangle {
 
     implicitWidth: layout.implicitWidth + 8
     implicitHeight: 20
-    color: Theme.accent1
     radius: 4
+    color: Network.color
 
     RowLayout {
         id: layout

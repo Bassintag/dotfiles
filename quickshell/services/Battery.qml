@@ -28,7 +28,10 @@ Singleton {
 
         return "";
     }
+    readonly property bool warning: {
+        return percentage < 0.2;
+    }
     readonly property bool danger: {
-        return !charging && percentage < 0.2;
+        return percentage < 0.1;
     }
 }
