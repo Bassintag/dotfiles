@@ -93,6 +93,7 @@ Scope {
                             Text {
                                 text: Format.formatPercentage(root.value)
                                 color: root.fg
+                                font.family: Theme.fontFamily
                                 font.pixelSize: 12
                             }
 

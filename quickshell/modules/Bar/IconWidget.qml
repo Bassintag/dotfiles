@@ -12,6 +12,7 @@ Rectangle {
     Text {
         anchors.centerIn: parent
         text: icon
+        font.family: Theme.fontFamily
         font.pixelSize: 12
     }
 

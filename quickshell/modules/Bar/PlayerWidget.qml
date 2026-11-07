@@ -53,6 +53,7 @@ Rectangle {
           anchors.centerIn: parent
           color: Theme.bg2
           text: player?.isPlaying ? "" : ""
+          font.family: Theme.fontFamily
           font.pixelSize: 12
         }
       }
@@ -82,6 +83,7 @@ Rectangle {
         id: title
         text: track ? track.title : ""
         color: Theme.bg2
+        font.family: Theme.fontFamily
         font.pixelSize: 12
       }
 

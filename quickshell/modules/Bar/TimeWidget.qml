@@ -10,6 +10,8 @@ Text {
     text: Time.time
 
     font {
+
+        family: Theme.fontFamily
         pixelSize: 12
         bold: true
     }

@@ -13,6 +13,7 @@ RowLayout {
 
     Text {
         text: Format.formatPercentage(Cpu.usage)
+        font.family: Theme.fontFamily
         font.pixelSize: 12
     }
 

@@ -38,4 +38,13 @@ if [ -f "$DOTFILES_DIR/wallpaper.png" ]; then
     echo "🖼️  Wallpaper symlinked to ~/wallpaper.png"
 fi
 
+# Symlink starship config
+if [ -f "$DOTFILES_DIR/starship.toml" ]; then
+    if [ -e "$CONFIG_DIR/starship.toml" ] && [ ! -L "$CONFIG_DIR/starship.toml" ]; then
+        mv "$CONFIG_DIR/starship.toml" "$CONFIG_DIR/starship.toml.backup.$(date +%s)"
+    fi
+    ln -sfn "$DOTFILES_DIR/starship.toml" "$CONFIG_DIR/starship.toml"
+    echo "🚀 Starship config symlinked"
+fi
+
 echo "✅ Done"

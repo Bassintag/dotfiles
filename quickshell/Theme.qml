@@ -2,6 +2,8 @@ import QtQuick
 pragma Singleton
 
 QtObject {
+    // font
+    readonly property string fontFamily: "JetBrainsMono Nerd Font"
     // bg
     readonly property color bg0: {
         "#2e3440";

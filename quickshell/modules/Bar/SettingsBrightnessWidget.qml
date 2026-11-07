@@ -15,6 +15,7 @@ RowLayout {
 
     Text {
         text: Format.formatPercentage(Brightness.value)
+        font.family: Theme.fontFamily
         font.pixelSize: 12
     }
 

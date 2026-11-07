@@ -24,6 +24,7 @@ Rectangle {
 
         Text {
             text: Network.label
+            font.family: Theme.fontFamily
             font.pixelSize: 12
         }
 

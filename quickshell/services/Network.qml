@@ -6,15 +6,23 @@ pragma Singleton
 
 Singleton {
     readonly property NetworkDevice device: {
-        return Networking.devices.values.find((d) => {
-            return d.connected;
-        }) || null;
+        for (const d of Networking.devices.values) {
+            if (d.connected)
+                return d;
+
+        }
+        return null;
     }
     readonly property Network network: {
         if (device == null)
             return null;
 
-        return device.networks.values[0] || null;
+        for (const n of device.networks.values) {
+            if (n.connected)
+                return n;
+
+        }
+        return null;
     }
     readonly property int state: {
         if (network == null)
@@ -35,32 +43,29 @@ Singleton {
         }
     }
     readonly property string color: {
-        switch (state) {
-        case ConnectionState.Connecting:
-        case ConnectionState.Disconnecting:
-            return Theme.yellow;
-        case ConnectionState.Connected:
-            return Theme.accent1;
-        case ConnectionState.Disconnected:
+        switch (Networking.connectivity) {
+        case NetworkConnectivity.None:
             return Theme.red;
+        case NetworkConnectivity.Portal:
+        case NetworkConnectivity.Limited:
+        case NetworkConnectivity.Unknown:
+            return Theme.yellow;
+        case NetworkConnectivity.Full:
+            return Theme.accent1;
         }
     }
     readonly property string icon: {
         if (device != null && device.type === DeviceType.Wired)
             return "󰈁";
 
-        let icons;
-        switch (state) {
-        case ConnectionState.Disconnected:
+        if (Networking.connectivity === NetworkConnectivity.None)
             return "󰤭";
-        case ConnectionState.Connecting:
-        case ConnectionState.Disconnecting:
-            icons = ["󰤫", "󰤠", "󰤣", "󰤦", "󰤩"];
-            break;
-        case ConnectionState.Connected:
+
+        let icons;
+        if (Networking.connectivity === NetworkConnectivity.Full)
             icons = ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"];
-            break;
-        }
+        else
+            icons = ["󰤫", "󰤠", "󰤣", "󰤦", "󰤩"];
         return icons[Math.floor(network.signalStrength * icons.length)];
     }
 }

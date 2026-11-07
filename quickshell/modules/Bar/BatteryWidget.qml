@@ -25,6 +25,7 @@ Rectangle {
 
         Text {
             text: Format.formatPercentage(Battery.percentage)
+            font.family: Theme.fontFamily
             font.pixelSize: 12
         }
 

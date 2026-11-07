@@ -47,6 +47,7 @@ Rectangle {
                     text: model.summary
                     color: Theme.fg2
                     font.bold: true
+                    font.family: Theme.fontFamily
                     font.pixelSize: 16
                     wrapMode: Text.WordWrap
                     width: parent.width
@@ -55,6 +56,7 @@ Rectangle {
                 Text {
                     text: model.body
                     color: Theme.fg0
+                    font.family: Theme.fontFamily
                     font.pixelSize: 12
                     wrapMode: Text.WordWrap
                     width: parent.width

@@ -72,6 +72,7 @@ Scope {
                 placeholderTextColor: Theme.bg3
                 color: Theme.fg2
                 focus: true
+                font.family: Theme.fontFamily
                 font.pixelSize: 18
                 padding: 8
                 text: root.query
@@ -112,7 +113,7 @@ Scope {
                 id: filtered
 
                 values: {
-                    let entries = DesktopEntries.applications.values;
+                    let entries = DesktopEntries.applications.values.filter((d) => !d.noDisplay && !d.runInTerminal);
                     const q = root.query.trim().toLowerCase();
                     if (q)
                         entries = entries.filter((d) => {
@@ -162,6 +163,7 @@ Scope {
                         Layout.fillWidth: true
                         text: modelData.name
                         color: Theme.fg2
+                        font.family: Theme.fontFamily
                         font.pixelSize: 16
                     }
 

@@ -14,6 +14,7 @@ RowLayout {
 
     Text {
         text: Format.formatPercentage(Audio.sink.audio.volume)
+        font.family: Theme.fontFamily
         font.pixelSize: 12
     }
 

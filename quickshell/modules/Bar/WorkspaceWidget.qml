@@ -1,4 +1,5 @@
 import QtQuick
+import Quickshell
 import Quickshell.Hyprland
 import qs
 
@@ -6,21 +7,24 @@ Rectangle {
     property var ws: Hyprland.workspaces.values.find((w) => {
         return w.id === index + 1;
     })
-    property bool isActive: ws ? ws.focused : false
+    property var monitor: Hyprland.monitorFor(QsWindow.window.screen)
+    property bool isActiveHere: ws ? (ws.active && ws.monitor === monitor) : false
+    property bool isActiveElsewhere: ws ? (ws.active && ws.monitor !== monitor) : false
 
     width: 20
     height: 20
     radius: 4
-    color: (isActive ? Theme.bg2 : "transparent")
+    color: (ws && ws.focused) ? Theme.bg2 : "transparent"
 
     Text {
-        anchors.top: parent.top
         anchors.horizontalCenter: parent.horizontalCenter
-        anchors.topMargin: 4
+        anchors.verticalCenter: parent.verticalCenter
         text: index + 1
-        color: (ws ? Theme.fg1 : Theme.bg3)
+        color: isActiveElsewhere ? Theme.accent0 : (ws ? Theme.fg1 : Theme.bg3)
 
         font {
+
+            family: Theme.fontFamily
             pixelSize: 12
             bold: true
         }
